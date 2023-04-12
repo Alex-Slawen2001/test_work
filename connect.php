@@ -1,4 +1,4 @@
 <?php
-$mysql = new mysqli("localhost","root","root","regist");
+$mysql = new mysqli("localhost","root","","comments");
 
 

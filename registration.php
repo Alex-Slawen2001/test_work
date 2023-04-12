@@ -1,26 +1,62 @@
 <?php
 //error_reporting(0);
-$mysql = new mysqli("localhost","root","","comments");
-$login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
- $login = mysqli_real_escape_string($mysql,$login);
-$name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
- $name = mysqli_real_escape_string($mysql,$name);
-$pass = filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
-$pass= mysqli_real_escape_string($mysql,$pass);
+require_once 'connect.php';
+// todo ctrl+alt+l
 
-$sql = 'SELECT count(id) as count FROM reg WHERE login=?'; //записываем sql в котором считаем количество найденных id
-$result=mysqli_query($mysql, $sql);
-$count_users = $result->fetch(); //получаем одну строчку
-if ((int)$count_users['count'] === 0) { //Если таких пользователей  0
+//соединения
+if ($mysql == false) {
+    print("Ошибка.Невозможно подключиться к базе данных" .
+        mysqli_connect_error());
 } else {
-   exit('Логин уже занят'); //делаем выход из скрипта. 
+    print ("Соединение с сервером установлено");
+}
+if (!mysqli_select_db($mysql, 'comments')) {
+    die(mysqli_error($mysql));
+}
+$login = $_POST['login'];
+$login = preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
+$login = mysqli_real_escape_string($mysql, $login);
+
+
+$name = $_POST['name'];
+$name = mysqli_real_escape_string($mysql, $name);
+$name = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
+
+$pass = $_POST['pass'];
+$pass = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
+$pass = mysqli_real_escape_string($mysql, $pass);
+
+//валидация
+if (!empty($_POST['login'])) {
+
+}
+
+
+
+
+// todo почитать https://www.php.net/manual/ru/language.types.type-juggling.php
+if (!$login) {
+    die('error');
+}
+
+
+
+
+//todo переши на mysqli_query
+
+$sql = 'SELECT count(id) FROM reg WHERE login = 1';//записываем sql в котором считаем количество найденных id
+$result = mysqli_query($mysql, $sql);
+var_dump($result);
+$count_users = $result->fetch_assoc(); //получаем одну строчку
+if ((int)$count_users['count(id)'] !== 0) {
+
+    exit('Логин уже занят'); //делаем выход из скрипта.
 }
 // Хеширование пароля
-$pass = md5($pass."affef1456");
+
+echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
 $mysql->query("INSERT INTO `reg` ( `login`, `pass`, `name`) VALUES('$login','$pass','$name')");
-
-
 
 $mysql->close();
 

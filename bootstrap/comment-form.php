@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<div>
 <form name="comment" action="obr.php" method="post">
     <p>
         <label>Ваше имя:</label>
@@ -23,6 +24,6 @@
         <input type="submit" value="Отправить комментарий" />
     </p>
 </form>
-
+</div>
 </body>
 </html>

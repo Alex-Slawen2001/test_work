@@ -213,9 +213,25 @@
     ?>
 
 
+
+
+
 <!--   aside-->
     <?
     include 'aside.php';
+
+    ?>
+
+    <?
+    include 'enter.php';
+
+    ?>
+
+
+
+    <!-- комментарии  -->
+    <?
+    include 'comment-form.php';
 
     ?>
 

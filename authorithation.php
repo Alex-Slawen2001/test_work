@@ -2,17 +2,32 @@
     // test commit
 error_reporting(0);
 session_start();
-$mysql = new mysqli("localhost","root","","comments");
-$login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
-$login = mysqli_real_escape_string($mysql,$login);
-$name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
-$name = mysqli_real_escape_string($mysql,$name);
-$pass = filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
-$pass= mysqli_real_escape_string($mysql,$pass);
+require_once 'connect.php';
+//соединения
+if ($mysql == false) {
+    print("Ошибка.Невозможно подключиться к базе данных" .
+        mysqli_connect_error());
+} else {
+    print ("Соединение с сервером установлено");
+}
+if (!mysqli_select_db($mysql, 'comments')) {
+    die(mysqli_error($mysql));
+}
+$login = $_POST['login'];
+$login = preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
+$login = mysqli_real_escape_string($mysql, $login);
 
 
+$name = $_POST['name'];
+$name = mysqli_real_escape_string($mysql, $name);
+$name = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
 
-$pass = md5($pass . "affef1456");
+$pass = $_POST['pass'];
+$pass = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
+$pass = mysqli_real_escape_string($mysql, $pass);
+
+
+echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
 
 

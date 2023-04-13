@@ -1,4 +1,5 @@
 <?php
+
 //error_reporting(0);
 require_once 'connect.php';
 // todo ctrl+alt+l
@@ -7,9 +8,8 @@ require_once 'connect.php';
 if ($mysql == false) {
     print("Ошибка.Невозможно подключиться к базе данных" .
         mysqli_connect_error());
-} else {
-    print ("Соединение с сервером установлено");
 }
+
 if (!mysqli_select_db($mysql, 'comments')) {
     die(mysqli_error($mysql));
 }
@@ -26,23 +26,9 @@ $pass = $_POST['pass'];
 $pass = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
 $pass = mysqli_real_escape_string($mysql, $pass);
 
-//валидация
-if (!empty($_POST['login'])) {
-
-}
-
-
-
 
 // todo почитать https://www.php.net/manual/ru/language.types.type-juggling.php
-if (!$login) {
-    die('error');
-}
 
-
-
-
-//todo переши на mysqli_query
 
 $sql = 'SELECT count(id) FROM reg WHERE login = 1';//записываем sql в котором считаем количество найденных id
 $result = mysqli_query($mysql, $sql);
@@ -61,6 +47,9 @@ $mysql->query("INSERT INTO `reg` ( `login`, `pass`, `name`) VALUES('$login','$pa
 $mysql->close();
 
 $_SESSION['auth'] = true;
+
+
+
 
 
 

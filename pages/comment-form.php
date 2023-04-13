@@ -9,7 +9,7 @@
 
 <body>
 <div>
-<form name="comment" action="obr.php" method="post">
+<form name="comment" action="../handlers/obr.php" method="post">
     <p>
         <label>Ваше имя:</label>
         <input type="text" name="author" />

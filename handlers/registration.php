@@ -1,8 +1,7 @@
 <?php
 
 error_reporting(0);
-require_once 'connect.php';
-// todo ctrl+alt+l
+require_once __DIR__ . '/../connect.php';
 
 //соединения
 if ($mysql == false) {

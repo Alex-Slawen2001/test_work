@@ -2,7 +2,9 @@
     // test commit
 error_reporting(0);
 session_start();
-require_once 'connect.php';
+
+// todo переписать используя __DIR__
+require_once __DIR__ . '/../connect.php';
 //соединения
 if ($mysql == false) {
     print("Ошибка.Невозможно подключиться к базе данных" .
@@ -13,19 +15,18 @@ if ($mysql == false) {
 if (!mysqli_select_db($mysql, 'comments')) {
     die(mysqli_error($mysql));
 }
-$login = $_POST['login'];
-$login = preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
-$login = mysqli_real_escape_string($mysql, $login);
 
+$login= validate_login($_POST['login']);
 
-$name = $_POST['name'];
+//fhehDUHudhDUHudhIDdhD
+$name = validate_name($_POST['name']);
 $name = mysqli_real_escape_string($mysql, $name);
 $name = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
 
-$pass = $_POST['pass'];
+$pass = validate_pass($_POST['pass']);
 $pass = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
 $pass = mysqli_real_escape_string($mysql, $pass);
-
+//vrijarifjrf
 
 echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
@@ -49,5 +50,5 @@ exit();
 $mysql->close();
 
 
-
+//todo переименовать в handlers
     

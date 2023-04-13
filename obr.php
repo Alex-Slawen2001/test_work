@@ -1,8 +1,7 @@
 <?php
 //убираем ошибки
 error_reporting(0);
-//require_once "connect.comment.php";
-$mysql = new mysqli("localhost", "root", "","comments");
+require_once "connect.comment.php";
 $author = $_POST["author"];
 $message = $_POST["message"];
 $page_id = $_POST["page_id"];

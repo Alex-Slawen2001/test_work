@@ -23,7 +23,7 @@ echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
 
 
-$result = $mysql->query('SELECT * FROM `reg` WHERE `login` = '.escape_db($login).' AND `pass` = ' . escape_db($pass));
+$result = $mysql->query('SELECT * FROM `reg` WHERE `login` = 1 '.escape_db($login).' AND `pass` = ' . escape_db($pass));
 $user = $result->fetch_assoc();
 
 
@@ -35,7 +35,7 @@ $_SESSION['auth'] = 'true';
 }
 exit();
 
-// дальше могу нахерачить,чтобы проверка была на каждой  странице,закрывать часть контента и тд.
+
 
 
 

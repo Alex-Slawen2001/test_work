@@ -29,7 +29,7 @@ $pass = mysqli_real_escape_string($mysql, $pass);
 // todo почитать https://www.php.net/manual/ru/language.types.type-juggling.php
 
 
-$sql = 'SELECT count(id) FROM reg WHERE login = 1';//записываем sql в котором считаем количество найденных id
+$sql = 'SELECT count(id) FROM reg WHERE login = "$login"';//записываем sql в котором считаем количество найденных id
 $result = mysqli_query($mysql, $sql);
 var_dump($result);
 $count_users = $result->fetch_assoc(); //получаем одну строчку
@@ -41,7 +41,7 @@ if ((int)$count_users['count(id)'] !== 0) {
 
 echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
-$mysql->query("INSERT INTO `reg` ( `login`, `pass`, `name`) VALUES('$login','$pass','$name')");
+$mysql->query("INSERT INTO `reg` ( `login`, `pass`, `name`) VALUES ('$login','$pass','$name')");
 
 $mysql->close();
 

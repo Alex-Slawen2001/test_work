@@ -1,10 +1,9 @@
 <?php
-
-function escape_db(string $param):string {
-    global $mysql;
-    return  mysqli_real_escape_string($mysql,$param);
-
-}
+////function escape_db(string $param):string {
+////    global $mysql;
+////    return  mysqli_real_escape_string($mysql,$param);
+////
+////}
 $mysql = new mysqli("localhost","root","","comments");
 
 
@@ -28,11 +27,32 @@ function check_user(string $login): bool
 
 function do_query($sql) {
     global $mysql;
-    return mysqli_query($mysql, $sql);
+    $result = mysqli_query($mysql,$sql);
+    return $count_users = $result->fetch_assoc();
 }
 
-function get_list(string $table): array {
-    $sql = 'SELECT FROM `'.$table. '`';
-    $result = do_query($sql);
+//function get_list(string $table): array {
+//    global $mysql;
+//    $sql = 'SELECT * FROM'." ".$table;
+//    $result = mysqli_query($mysql,$sql);
+//
+//    while ($row = $result->fetch_assoc()) {
+//        print_r("<b>" . $row["login"] . "</b>: " . $row["name"]);
+//        echo "<br />";
+//        echo "<b>" . $row["login"] . "</b>: " . $row["name"];
+//
+//    }
+//
+//}
+//$tab = ('reg');
+//get_list($tab);
+
+
+
+function db_run(string $sql) {
+    global $mysql;
+    return mysqli_query($mysql,$sql);
 
 }
+$tab = ('reg');
+db_run($tab);

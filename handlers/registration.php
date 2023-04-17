@@ -41,10 +41,9 @@ if ((int)$count_users['count(id)'] !== 0) {
 
 echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 
-$mysql->query("INSERT INTO `reg` ( `login`, `pass`, `name`) VALUES ('$login','$pass','$name')");
-
-$mysql->close();
-
+$sql = 'INSERT INTO ' .$table. ' (`login`,`name`,`pass`)'.'VALUES'.'$login','$name','$pass';
+$res = mysqli_query($mysql,$sql);
+var_dump($sql);
 $_SESSION['auth'] = true;
 
 

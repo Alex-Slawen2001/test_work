@@ -1,5 +1,7 @@
 <?php
 
+    //todo нуждается в форматировании
+
 function validate_login(string $login)
 {
 

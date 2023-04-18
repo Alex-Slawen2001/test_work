@@ -1,7 +1,7 @@
 <?php
 
 
-$mysql = new mysqli("localhost","root","","comments");
+$mysql = new mysqli("localhost","root","","base");
 if ($mysql == false) {
     die("Ошибка.Невозможно подключиться к базе данных");
 

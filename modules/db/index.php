@@ -4,7 +4,7 @@
     ////    return  mysqli_real_escape_string($mysql,$param);
     ////
     ////}
-    $mysql = new mysqli("localhost", "root", "", "comments");
+    $mysql = new mysqli("localhost", "root", "", "base");
 
     function get_users(string $table) {
         global $mysql;
@@ -47,6 +47,3 @@
         global $mysql;
         return mysqli_query($mysql, $sql);
     }
-
-    $tab = ('reg');
-    db_run($tab);

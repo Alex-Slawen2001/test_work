@@ -1,11 +1,9 @@
 <?php
+    session_start();
+    $mysql = new mysqli("localhost", "root", "", "base");
+    if ($mysql == false) {
+        die("Ошибка.Невозможно подключиться к базе данных");
+    }
 
-
-$mysql = new mysqli("localhost","root","","base");
-if ($mysql == false) {
-    die("Ошибка.Невозможно подключиться к базе данных");
-
-}
-
-require_once __DIR__ . '/modules/index.php';
+    require_once __DIR__ . '/modules/index.php';
 

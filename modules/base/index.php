@@ -1,24 +1,17 @@
 <?php
 
-function validate_login(string $login)
-{
+    function validate_login(string $login) {
 
-    return preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
+        return preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
+    }
 
-}
+    function validate_name(string $name) {
+        return preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
+    }
 
-
-function validate_name(string $name)
-{
-    return preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
-
-}
-
-
-function validate_pass(string $pass)
-{
-    return preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
-}
+    function validate_pass(string $pass) {
+        return preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
+    }
 
 
 

@@ -1,20 +1,49 @@
 <?php
     require_once __DIR__ . '/../connect.php';
+//    заносим введенный пользователем логин в переменную $login, если он пустой, то уничтожаем переменную
+    if (isset($_POST['login'])) {
+        $login = $_POST['login'];
+        if ($login == '') {
+            unset($login);
+        }
+    }
+    //заносим введенный пользователем name в переменную $name, если он пустой, то уничтожаем переменную
+    if (isset($_POST['name'])) {
+        $name = $_POST['name'];
+        if ($name == '') {
+            unset($name);
+        }
+    }
+    //заносим введенный пользователем pass в переменную $pass, если он пустой, то уничтожаем переменную
+    if (isset($_POST['pass'])) {
+        $pass = $_POST['pass'];
+        if ($pass == '') {
+            unset($pass);
+        }
+    }
+
+    //если пользователь не ввел логин или пароль, то выдаем ошибку и останавливаем скрипт
+    if (empty($login) or empty($name)  or empty($pass)) {
+        exit ("Вы ввели не всю информацию, вернитесь назад и заполните все поля!"); //останавливаем выполнение сценариев
+
+    }
 
     $login = $_POST['login'];
-    $login = preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
-    $login = mysqli_real_escape_string($mysql, $login);
+    $valid_login = validate_login($login);
 
 
     $name = $_POST['name'];
-    $name = mysqli_real_escape_string($mysql, $name);
-    $name = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $name);
+    $valid_name = validate_name($name);
+
 
     $pass = $_POST['pass'];
-    $pass = preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
-    $pass = mysqli_real_escape_string($mysql, $pass);
+    $valid_pass = validate_pass($pass);
 
-    echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+
+    $check = check_user($login) ;
+//доебывается здесь.Кидает ошибку Uncaught mysqli_sql_exception: FUNCTION base.escape_db does not exist in W:\domains\test-work.local\modules\db\index.php:27
+// подскажи в каком направлении думать
+
 
 $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";
 $res = db_run($sql);

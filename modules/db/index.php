@@ -1,10 +1,9 @@
 <?php
-    ////function escape_db(string $param):string {
-    ////    global $mysql;
-    ////    return  mysqli_real_escape_string($mysql,$param);
-    ////
-    ////}
-    $mysql = new mysqli("localhost", "root", "", "base");
+    require_once __DIR__ . '/../../connect.php';
+    function escape_db(string $param): string {
+        global $mysql;
+        return mysqli_real_escape_string($mysql, $param);
+    }
 
     function get_users(string $table) {
         global $mysql;
@@ -36,7 +35,7 @@
 
         while ($row = $result->fetch_assoc()) {
 
-//            todo сформироввть и положить в массив
+            //            todo сформироввть и положить в массив
         }
     }
 

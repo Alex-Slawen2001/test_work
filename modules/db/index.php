@@ -33,13 +33,10 @@
         $sql = 'SELECT * FROM' . " " . $table;
         $result = mysqli_query($mysql, $sql);
 
-      while ($row = $result->fetch_assoc()) {
-      }
+        while ($row = $result->fetch_assoc()) {
+        }
     }
 
-    // todo убрать вызовы функций из файла, где они объявляются
-    $tab = ('reg');
-    get_list($tab);
 
     function db_run(string $sql) {
         global $mysql;

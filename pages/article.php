@@ -9,6 +9,7 @@
             <label>Ваше имя:</label>
             <input type="text" name="author" />
         </p>
+
         <p>
             <label>Ваш комментарий:</label>
             <br />

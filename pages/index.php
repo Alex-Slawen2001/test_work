@@ -65,9 +65,22 @@
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
     </div>
   </div>
+<div>
+  <?php
+    require_once __DIR__ . '/../connect.php';
+    $sql = 'SELECT * FROM `articles` ';
+    $result = mysqli_query($mysql,$sql);
 
 
-    <div class="row mb-2">
+    while ($row = $result->fetch_assoc()) {
+      print_r("<b>" . $row["header"] . "</b>: " . $row["subtitle"] . $row["text"] . $row["date"]); //Вывод комментариев
+      echo "<br />";
+      echo "<b>" . $row["header"] . "</b>: " . $row["subtitle"] . $row["text"] . $row["date"];
+
+    }
+  ?>
+</div>
+  <div class="row mb-2">
         <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">

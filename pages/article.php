@@ -1,6 +1,7 @@
 <? require_once 'blocks/head.php'; ?>
 <?require_once 'blocks/header.php';?>
-<?require_once __DIR__ . '/../handlers/enter.php';?>
+
+
 <body>
 
 <div>
@@ -21,20 +22,5 @@
     </form>
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <? require_once 'blocks/footer.php'; ?>

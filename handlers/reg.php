@@ -41,8 +41,7 @@
 
 
     $check = check_user($login) ;
-//доебывается здесь.Кидает ошибку Uncaught mysqli_sql_exception: FUNCTION base.escape_db does not exist in W:\domains\test-work.local\modules\db\index.php:27
-// подскажи в каком направлении думать
+
 
 
 $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";

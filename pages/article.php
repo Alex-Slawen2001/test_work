@@ -2,6 +2,17 @@
 <?require_once 'blocks/header.php';?>
 
 <body>
+<?
+  error_reporting(0);
+  require_once "../publisher.php";
+  $sql = 'SELECT * FROM `coms`';
+  $art = get_list_sql($sql);
+  foreach ($art as $comments) {
+    print_r("<b>" . $comments["author"] . "</b>: " . $comments["message"]); //Вывод комментариев
+    echo "<br />";
+    echo "<b>" . $comments["author"] . "</b>: " . $comments["message"];
+  }
+?>
 
 <div>
     <form name="comment" action="../handlers/com.php" method="post">
@@ -22,9 +33,7 @@
         </p>
     </form>
 </div>
-<div>
 
-</div>>
 </body>
 
 <? require_once 'blocks/footer.php'; ?>

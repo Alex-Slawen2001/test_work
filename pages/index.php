@@ -84,7 +84,7 @@
 
   <div class="row mb-2">
     <?
-      require_once "../test.php";
+      require_once "../publisher.php";
       $sql = 'SELECT * FROM `articles`';
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>

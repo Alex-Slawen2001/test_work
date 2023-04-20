@@ -14,6 +14,11 @@
   }
 ?>
 
+
+
+
+
+
 <div>
     <form name="comment" action="../handlers/com.php" method="post">
         <p>

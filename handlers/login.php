@@ -36,5 +36,6 @@
         $_SESSION['auth'] = 'true';
     }
 
+require_once  "../pages/index.php";
 
     exit();

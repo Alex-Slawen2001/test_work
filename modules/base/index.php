@@ -13,6 +13,8 @@
         return preg_replace('#[^a-zA-Z\-_0-9\-{6,20}]+#', '', $pass);
     }
 
-
-
+    function dd($args) {
+        var_dump(func_get_arg());
+        die();
+    }
 

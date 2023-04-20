@@ -48,4 +48,4 @@
 $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";
 $res = db_run($sql);
 $_SESSION['auth'] = true;
-include "../pages/index.php";
+    require_once  "../pages/index.php";

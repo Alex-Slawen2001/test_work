@@ -9,7 +9,8 @@
             <label>Ваше имя:</label>
             <input type="text" name="author" />
         </p>
-
+      <div>
+      </div>
         <p>
             <label>Ваш комментарий:</label>
             <br />
@@ -21,6 +22,9 @@
         </p>
     </form>
 </div>
+<div>
+
+</div>>
 </body>
 
 <? require_once 'blocks/footer.php'; ?>

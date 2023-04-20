@@ -1,11 +1,22 @@
 <?php
     require_once __DIR__ . '/connect.php';
-    for ($i = 0; $i <= 10; $i++) {
-        $header = 'header' . $i;
-        $subtitle = 'subtitle' . $i;
-        $text = 'text' . $i;
-        $date = time() ;
-        $sql = "INSERT INTO `articles` (`header`,`subtitle`,`text`,`date`) VALUES ('$header','$subtitle','$text','$date') ";
-        $result = mysqli_query($mysql,$sql);
-        var_dump($result);
-    }
+//
+        function get_list_sql($sql) {
+            global $mysql;
+            $list = [];
+            $result = $mysql->query($sql);
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                    $list[] = $row;
+
+                }
+            }
+                return $list;
+        }
+        $sql = 'SELECT * FROM `articles`';
+        $art = get_list_sql($sql);
+
+        foreach ($art as $item ) {
+
+        }
+

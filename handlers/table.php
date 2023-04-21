@@ -1,4 +1,4 @@
-<?php
+<?php // todo удалить
     require_once __DIR__ . '/../connect.php';
     for ($i = 0; $i <= 10; $i++) {
         $header = '<h3 class="mb-0">Featured post</h3>' . $i;

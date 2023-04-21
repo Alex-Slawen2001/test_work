@@ -2,7 +2,7 @@
     require_once __DIR__ . '/../../connect.php';
     function escape_db(string $param): string {
         global $mysql;
-        return mysqli_real_escape_string($mysql, $param);
+        return '\''.mysqli_real_escape_string($mysql, $param) . '\'';
     }
 
     function get_users(string $table) {
@@ -13,10 +13,9 @@
     }
 
     function check_user(string $login): bool {
-        $sql = 'SELECT count(id) FROM `reg` WHERE login = ' . escape_db($login);
+        $sql = 'SELECT count(id) FROM `reg` WHERE `login` = '  . escape_db($login);
         $result = do_query($sql);
-        $count_users = $result->fetch_assoc();
-        if ((int) $count_users['count(id)'] > 0) {
+        if ((int) $result['count(id)'] > 0) {
             return false;
         }
         return true;

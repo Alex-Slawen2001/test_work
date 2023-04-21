@@ -1,5 +1,4 @@
 <?php
-    //убираем ошибки
     error_reporting(0);
     require_once __DIR__ . '/../connect.php';
     $author = $_POST["author"];
@@ -12,15 +11,13 @@
 
     $page_id = $_POST["page_id"];
 
-
     if (!empty($message) and !empty($author)) {
         echo "сообщение отправлено";
         $_SESSION['message'] = true;
         // todo запрос работать не будет
         $mysql->query("INSERT INTO `coms` (`author`,`message`,`page_id`) VALUES ('$author','$message','$page_id')");
-        include "../pages/boot.php";
+        include "../pages/article.php";
     } else {
         echo "нельзя отправлять пустые формы";
-        include "../pages/boot.php";
-
+        include "../pages/article.php";
     }

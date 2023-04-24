@@ -1,4 +1,10 @@
 <?php
-$mysql = new mysqli("localhost","root","","comments");
+//    session_start();
+    $mysql = new mysqli("localhost", "root", "", "base");
+    if ($mysql == false) {
+        die(mysqli_error($mysql));
+        print_r("Ошибка.Невозможно подключиться к базе данных");
+    }
 
+    require_once __DIR__ . '/modules/index.php';
 

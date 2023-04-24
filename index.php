@@ -1,41 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <title>форма регистрации</title>
-</head>
-<body>
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col">
-                <h1>Форма регистрации</h1>
-                <form action="registration.php" method="post">
-                    <input type="text" class=" form form-control" name="login" id="login" placeholder="Введите логин"><br>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя"><br>
-                    <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль"><br>
-                    <button class="btn btn-success" type="submit" >Зарегистрировать</button>
-                </form>
-            </div>
-            
-        
-            <div class="col">
-                <h1>Форма авторизации</h1>
-                <form action="authorithation.php" method="post">
-                    <input type="text" class=" form form-control" name="login" id="login" placeholder="Введите логин"><br>
-                    <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль"><br>
-                    <button class="btn btn-success" type="submit">Войти</button>
-                </form>
-            </div>
-          
-            
+<?php
 
-            
-         </div>
-    </div>
+    require_once __DIR__ . '/connect.php';
 
-    
-</body>
-</html>
+    const PAGE_ROOT = '/pages/'; // Определяем директорию со страницами
+    $page = substr($_SERVER['REQUEST_URI'], 1); // Берем название страницы
+    $page = preg_replace('/[\/\s\t]/','',$page);
+    var_dump($page);
+
+    $qm_position = strripos($page, '?', -1);
+    $qm_position = $qm_position === false ? null : $qm_position;
+
+    $page = substr($page, 0, $qm_position);
+    var_dump($page, $qm_position);
+    if (file_exists(__DIR__ . PAGE_ROOT . $page . '.php')) { // Проеряем есть ли запрашиваемый файл
+        require_once __DIR__ . PAGE_ROOT . $page . '.php'; // Подключаем его
+    } else { // Если файла нет, то отдаём пользователю страницу с ошибкой
+        require_once __DIR__ . '/error_page.php';
+    }

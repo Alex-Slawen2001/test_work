@@ -3,3 +3,5 @@ RewriteCond %{REQUEST_URI} !assets(.*)
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule . index.php [L]
+
+dgrgfeFEfgdFGsrgsGeSfe

@@ -52,3 +52,18 @@
         }
         return $list;
     }
+//попробвать session start;
+    function redirect() {
+       $_SESSION['redir'] =  'Добро пожаловать';
+
+    }
+    function unset_redirect() {
+       echo $_SESSION['redir'];
+       unset($_SESSION['redir']);
+       session_destroy();
+
+    }
+
+
+
+

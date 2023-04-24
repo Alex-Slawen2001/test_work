@@ -34,16 +34,19 @@
     $pass = $_POST['pass'];
     $pass = validate_pass($pass);
 
-    $check = check_user($login);
-    if ($check == false) {
-        echo 'Данный пользователь уже существует';
-        die(mysqli_error());
-    }
+//    $check = check_user($login);
+//    if ($check == false) {
+//        echo 'Данный пользователь уже существует';
+//        die();
+//    }
 
     $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";
     $res = db_run($sql);
     if ($res == '') {
         die(mysqli_error());
     }
-    $_SESSION['auth'] = true;
-    require_once "../pages/main.php";
+    redirect();
+    unset_redirect();
+
+
+

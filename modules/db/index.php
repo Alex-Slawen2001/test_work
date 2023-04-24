@@ -36,8 +36,19 @@
         }
     }
 
-
     function db_run(string $sql) {
         global $mysql;
         return mysqli_query($mysql, $sql);
+    }
+
+    function get_list_sql($sql) {
+        global $mysql;
+        $list = [];
+        $result = $mysql->query($sql);
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $list[] = $row;
+            }
+        }
+        return $list;
     }

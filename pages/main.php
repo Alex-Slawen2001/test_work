@@ -1,7 +1,5 @@
 <? require_once 'blocks/head.php'; ?>
-
 <? require_once 'blocks/header.php'; ?>
-
 
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -77,14 +75,14 @@
       <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0">
-        <a href="#" class="text-white fw-bold">Continue reading...</a>
+        <a href="/article/" class="text-white fw-bold">Continue reading...</a>
       </p>
     </div>
   </div>
 
   <div class="row mb-2">
     <?
-      require_once "../publisher.php";
+      require_once '../modules/db/index.php';
       $sql = 'SELECT * FROM `articles`';
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>
@@ -95,7 +93,7 @@
               <h3 class="mb-0"><?php echo $item['header'] ?></h3>
               <div class="mb-1 text-body-secondary">Nov 12</div>
               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="article/?id=<?php echo $item['id']?>" class="stretched-link">Continue reading</a>
+              <a href="/article/?id=<?php echo $item['id']?>" class="stretched-link">Continue reading</a>
             </div>
             <div class="col-auto d-none d-lg-block">
               <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>

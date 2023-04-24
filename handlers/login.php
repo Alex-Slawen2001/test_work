@@ -19,9 +19,10 @@
 
     if (empty($user)) {
         echo "Такой пользователь не найден";
-        die(mysqli_error());
+        die();
     }
     $_SESSION['auth'] = 'true';
+    require_once "../pages/main.php";
 
 
 

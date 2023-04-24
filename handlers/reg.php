@@ -25,11 +25,6 @@
         }
     }
 
-
-
-
-
-
     $login = $_POST['login'];
     $login = validate_login($login);
 

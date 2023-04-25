@@ -43,10 +43,19 @@
     $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";
     $res = db_run($sql);
     if ($res == '') {
-        die(mysqli_error());
+        die(mysqli_error($sql));
     }
-    redirect();
-    unset_redirect();
+
+    if (isset($res)) {
+     $start_session = handler_exit();
+
+     $end_session = unset_redirect();
+    }else {
+        echo 'Что-то пошло нет так';
+        die();
+    }
+
+
 
 
 

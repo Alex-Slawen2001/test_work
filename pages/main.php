@@ -1,6 +1,10 @@
 <? require_once 'blocks/head.php'; ?>
 <? require_once 'blocks/header.php'; ?>
-
+<?php
+  echo '<pre>';
+  var_dump($_SERVER);
+  echo '</pre>';
+?>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check2" viewBox="0 0 16 16">
@@ -110,3 +114,4 @@
 <? require_once 'blocks/footer.php'; ?>
 </body>
 </html>
+

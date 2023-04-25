@@ -1,8 +1,9 @@
 <?php
+    error_reporting(0);
     require_once __DIR__ . '/../../connect.php';
     function escape_db(string $param): string {
         global $mysql;
-        return '\''.mysqli_real_escape_string($mysql, $param) . '\'';
+        return '\'' . mysqli_real_escape_string($mysql, $param) . '\'';
     }
 
     function get_users(string $table) {
@@ -13,7 +14,7 @@
     }
 
     function check_user(string $login): bool {
-        $sql = 'SELECT count(id) FROM `reg` WHERE `login` = '  . escape_db($login);
+        $sql = 'SELECT count(id) FROM `reg` WHERE `login` = ' . escape_db($login);
         $result = do_query($sql);
         if ((int) $result['count(id)'] > 0) {
             return false;
@@ -52,16 +53,21 @@
         }
         return $list;
     }
-//попробвать session start;
-    function redirect() {
-       $_SESSION['redir'] =  'Добро пожаловать';
 
+    function handler_exit(string $message, string $page): void {
+        $_SESSION['message'] = $message;
+        redirect($page);
     }
-    function unset_redirect() {
-       echo $_SESSION['redir'];
-       unset($_SESSION['redir']);
-       session_destroy();
 
+    function redirect(string $link) {
+        $location = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+        header('Location: ' . $location . $link, true, 301);
+        exit(0);
+    }
+
+    function show_message() {
+        echo $_SESSION['message'] ?? '';
+        unset($_SESSION['message']);
     }
 
 

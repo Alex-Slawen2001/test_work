@@ -1,10 +1,5 @@
 <? require_once 'blocks/head.php'; ?>
 <? require_once 'blocks/header.php'; ?>
-<?php
-  echo '<pre>';
-  var_dump($_SERVER);
-  echo '</pre>';
-?>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check2" viewBox="0 0 16 16">
@@ -86,7 +81,6 @@
 
   <div class="row mb-2">
     <?
-      require_once '../modules/db/index.php';
       $sql = 'SELECT * FROM `articles`';
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>

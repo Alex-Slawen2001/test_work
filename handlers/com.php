@@ -14,8 +14,7 @@
         echo "сообщение отправлено";
         $_SESSION['message'] = true;
         $mysql->query("INSERT INTO `coms` (`author`,`message`,`page_id`) VALUES ('$author','$message','$page_id')");
-        require_once "../pages/article.php";
+        handler_exit('сообщение отправлено', 'article');
     } else {
-        echo "нельзя отправлять пустые формы";
-        require_once "../pages/article.php";
+        handler_exit('Нельзя отправять пустые формы', 'article');
     }

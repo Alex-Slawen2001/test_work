@@ -12,17 +12,16 @@
     $pass = $_POST['pass'] ?? '';
     $pass = validate_pass($pass);
     if (!$pass) {
-        die('Введите корректный пароль');
+        handler_exit('Введите корректный пароль', 'login');
     }
     $result = $mysql->query('SELECT * FROM `reg` WHERE `login` =  ' . escape_db($login) . ' AND `pass` = ' . escape_db($pass));
     $user = $result->fetch_assoc();
 
     if (empty($user)) {
-        echo "Такой пользователь не найден";
-        die();
+        handler_exit('Такой пользователь не найден', 'login');
     }
     $_SESSION['auth'] = 'true';
-    require_once "../pages/main.php";
+    handler_exit('Добро пожаловать', 'main');
 
 
 

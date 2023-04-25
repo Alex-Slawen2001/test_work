@@ -1,6 +1,4 @@
 <?php
-    error_reporting(0);
-    require_once __DIR__ . '/../../connect.php';
     function escape_db(string $param): string {
         global $mysql;
         return '\'' . mysqli_real_escape_string($mysql, $param) . '\'';

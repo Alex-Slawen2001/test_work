@@ -81,7 +81,16 @@
 
   <div class="row mb-2">
     <?
-      $sql = 'SELECT * FROM `articles`';
+      if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+      }else {
+        $page = 1;
+      }
+     $page = $_GET['page'];
+     $notesOnPage = 2;
+     $from = ($page - 1) * $notesOnPage;
+      $sql = "SELECT * FROM `articles` LIMIT $from,$notesOnPage";
+
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>
         <div class="col-md-6">
@@ -103,7 +112,13 @@
         </div>
       <?php } ?>
   </div>
-
+  <div>
+    <a href="?page=1">1</a>
+    <a href="?page=2">2</a>
+    <a href="?page=3">3</a>
+    <a href="?page=4">4</a>
+    <a href="?page=5">5</a>
+  </div>>
 </main>
 <? require_once 'blocks/footer.php'; ?>
 </body>

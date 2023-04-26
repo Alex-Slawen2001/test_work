@@ -1,5 +1,5 @@
 <?php
-    error_reporting(0);
+    error_reporting(1);
     ini_set('display_errors', true);
     session_start();
     $mysql = new mysqli("localhost", "root", "", "base");

@@ -6,7 +6,6 @@
 
   <div>
     <?
-      error_reporting(0);
       $id = $_GET["id"];
       if ($_GET["id"]) {
         $sql = 'SELECT * FROM `articles` WHERE `id` = ' . escape_db($id);
@@ -32,7 +31,7 @@
         <?php }
       } else {
         echo 'запись не найдена';
-        //        die(mysqli_error());
+         die();
       }
     ?>
   </div>
@@ -51,7 +50,7 @@
       <textarea name="message" cols="30" rows="10"></textarea>
     </p>
     <p>
-      <input type="hidden" name="page_id" value="150"/>
+      <input type="hidden" name="article_id" value="<?php echo $id?>"/>
       <input type="submit" value="Отправить комментарий"/>
     </p>
   </form>
@@ -60,13 +59,11 @@
 
 <div>
   <?
-    error_reporting(0);
-    $sql = 'SELECT * FROM `coms`';
+    $sql = 'SELECT * FROM `coms` WHERE `article_id` = '. escape_db($id);;
     $art = get_list_sql($sql);
     foreach ($art as $comments) {
       print_r("<b>" . $comments["author"] . "</b>: " . $comments["message"]); //Вывод комментариев
       echo "<br />";
-      echo "<b>" . $comments["author"] . "</b>: " . $comments["message"];
     }
   ?>
 </div>

@@ -1,28 +1,23 @@
 <?php
-    error_reporting(0);
-    ini_set('display_errors', true);
+
     require_once __DIR__ . '/../connect.php';
     $author = $_POST["author"];
-    $author = ($author);
-
 
     $message = $_POST["message"];
-    $message = ($message);
 
-    $page_id = $_POST["page_id"];
-    $page_id = ($page_id);
-
+    $article_id = $_POST["article_id"];
+    var_dump($article_id);
     if (empty($message) and empty($author)) {
 
         handler_exit('Нельзя отправлять пустые формы', 'article');
     }
 
     $sql = 'INSERT INTO `coms` 
-            (`author`,`message`,`page_id`) 
+            (`author`,`message`,`article_id`) 
             VALUES ( ' .  escape_db($author).', 
             ' . escape_db($message).', 
-            ' . escape_db($page_id).')';
+            ' . escape_db($article_id).')';
     $result = db_run($sql);
     var_dump(1);
     var_dump($result);
-    handler_exit('сообщение отправлено', 'article');
+    handler_exit('сообщение отправлено', 'article/?id='.$article_id);

@@ -34,13 +34,17 @@
     $pass = $_POST['pass'];
     $pass = validate_pass($pass);
 
-//    $check = check_user($login);
-//    if ($check == false) {
-//        echo 'Данный пользователь уже существует';
-//        die();
-//    }
+    $check = check_user($login);
+    if ($check == false) {
+        echo 'Данный пользователь уже существует';
+        die();
+    }
 
-    $sql = "INSERT INTO `reg` (`login`,`name`,`pass`) VALUES ('$login','$name','$pass')";
+    $sql = 'INSERT INTO `reg` 
+            (`login`,`name`,`pass`) 
+            VALUES ( ' .  escape_db($login).', 
+            ' . escape_db($name).', 
+            ' . escape_db($pass).')';
     $res = db_run($sql);
     if ($res == '') {
         die(mysqli_error($sql));

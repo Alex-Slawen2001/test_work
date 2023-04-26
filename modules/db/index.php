@@ -37,7 +37,11 @@
 
     function db_run(string $sql) {
         global $mysql;
-        return mysqli_query($mysql, $sql);
+        $result = mysqli_query($mysql, $sql);
+        if (mysqli_errno($mysql) !== 0) {
+            die('Error');
+        }
+        return $result;
     }
 //    todo отлавливать ошибки
 

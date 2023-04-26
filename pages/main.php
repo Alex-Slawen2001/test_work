@@ -86,10 +86,9 @@
       }else {
         $page = 1;
       }
-     $page = $_GET['page'];
      $notesOnPage = 2;
-     $from = ($page - 1) * $notesOnPage;
-      $sql = "SELECT * FROM `articles` LIMIT $from,$notesOnPage";
+       $from = ($page - 1) * $notesOnPage;
+      $sql = "SELECT * FROM `articles` LIMIT $from, $notesOnPage";
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>
         <div class="col-md-6">
@@ -117,7 +116,7 @@
     <a href="?page=3">3</a>
     <a href="?page=4">4</a>
     <a href="?page=5">5</a>
-  </div>>
+  </div>
 </main>
 <? require_once 'blocks/footer.php'; ?>
 </body>

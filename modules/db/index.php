@@ -43,7 +43,6 @@
         }
         return $result;
     }
-//    todo отлавливать ошибки
 
     function get_list_sql($sql) {
         global $mysql;

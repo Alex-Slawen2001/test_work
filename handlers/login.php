@@ -14,8 +14,12 @@
     if (!$pass) {
         handler_exit('Введите корректный пароль', 'login');
     }
-    $result = $mysql->query('SELECT * FROM `reg` WHERE `login` =  ' . escape_db($login) . ' AND `pass` = ' . escape_db($pass));
+    $sql = ('SELECT * FROM `reg` WHERE `login` =  ' . escape_db($login) . ' AND `pass` = ' . escape_db($pass));
+    $result = db_run($sql);
     $user = $result->fetch_assoc();
+
+    $hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
+    password_verify('rasmuslerdorf', $hash);
 
     if (empty($user)) {
         handler_exit('Такой пользователь не найден', 'login');

@@ -1,4 +1,4 @@
-<? require_once 'blocks/head.php'; ?>
+<?require_once 'blocks/head.php';?>
 <?require_once 'blocks/header.php';?>
 <body>
 <?php show_message(); ?>

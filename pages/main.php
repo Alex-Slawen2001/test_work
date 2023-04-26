@@ -90,7 +90,6 @@
      $notesOnPage = 2;
      $from = ($page - 1) * $notesOnPage;
       $sql = "SELECT * FROM `articles` LIMIT $from,$notesOnPage";
-
       $art = get_list_sql($sql);
       foreach ($art as $item) { ?>
         <div class="col-md-6">

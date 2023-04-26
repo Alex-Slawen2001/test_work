@@ -39,6 +39,7 @@
         global $mysql;
         return mysqli_query($mysql, $sql);
     }
+//    todo отлавливать ошибки
 
     function get_list_sql($sql) {
         global $mysql;

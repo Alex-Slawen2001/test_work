@@ -3,10 +3,9 @@
     ini_set('display_errors', true);
     session_start();
     $mysql = new mysqli("localhost", "root", "", "base");
-    if ($mysql == false) {
-        die(mysqli_error($mysql));
-        print_r("Ошибка.Невозможно подключиться к базе данных");
+    if ($mysql->connect_errno !== 0) {
+       die ('Ошибка при пif ($mysql->connect_errno)одключении: ' . $mysql->connect_error());
     }
-
+    var_dump($mysql->connect_errno);
     require_once __DIR__ . '/modules/index.php';
 

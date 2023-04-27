@@ -20,6 +20,7 @@
     if (!$pass) {
         handler_exit('Введите пароль', $page);
     }
+    md5($pass = 'dhuhduqwhd5494');
 
     $check = check_user($login);
     if ($check == false) {

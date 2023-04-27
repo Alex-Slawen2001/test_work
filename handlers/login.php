@@ -14,7 +14,7 @@
     if (!$pass) {
         handler_exit('Введите корректный пароль', 'login');
     }
-    md5($pass = 'dhuhduqwhd5494');
+//    md5($pass = 'dhuhduqwhd5494');
     $sql = ('SELECT * FROM `reg` WHERE `login` =  ' . escape_db($login) . ' AND `pass` = ' . escape_db($pass));
     $result = db_run($sql);
     $user = $result->fetch_assoc();

@@ -4,8 +4,7 @@
     session_start();
     $mysql = new mysqli("localhost", "root", "", "base");
     if ($mysql->connect_errno !== 0) {
-       die ('Ошибка при пif ($mysql->connect_errno)одключении: ' . $mysql->connect_error());
+       die ('Ошибка при подключении ($mysql->connect_errno): ' . $mysql->connect_error());
     }
-    var_dump($mysql->connect_errno);
     require_once __DIR__ . '/modules/index.php';
 

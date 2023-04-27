@@ -9,6 +9,7 @@
 
     $article_id = $_POST["article_id"];
     if (empty($message) or empty($author)) {
+        echo 'Нельзя отправлять пустые формы';
         handler_exit('Нельзя отправлять пустые формы', 'article');
     }
 

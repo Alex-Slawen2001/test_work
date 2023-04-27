@@ -1,6 +1,5 @@
 <?php
     function validate_login(string $login) {
-
         return preg_replace('#[^a-zA-Z\-_0-9]+#', '', $login);
     }
 
